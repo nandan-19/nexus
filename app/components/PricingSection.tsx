@@ -23,9 +23,9 @@ const PricingSection = () => {
   const [billing, setBilling] = useState<'monthly' | 'yearly'>('monthly');
 
   return (
-    <section className="w-full py-16 bg-white flex flex-col items-center">
-      <h2 className="text-3xl font-bold mb-8">Pricing</h2>
-      <div className="flex gap-4 mb-8">
+    <section className="w-full py-16 bg-white flex flex-col items-center px-4">
+      <h2 className="text-3xl font-bold mb-8 text-blue-900">Pricing</h2>
+      <div className="flex gap-4 mb-8 flex-wrap justify-center">
         <button
           onClick={() => setBilling('monthly')}
           className={`px-4 py-2 rounded-l-lg font-semibold border border-blue-200 ${billing === 'monthly' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-700'}`}
@@ -39,7 +39,7 @@ const PricingSection = () => {
           Yearly <span className="ml-1 text-xs bg-yellow-200 text-yellow-800 px-2 py-0.5 rounded">Save 20%</span>
         </button>
       </div>
-      <div className="flex flex-wrap gap-8 justify-center">
+      <div className="flex flex-col md:flex-row flex-wrap gap-8 justify-center w-full max-w-4xl">
         {plans.map((plan, i) => (
           <motion.div
             key={plan.name}
@@ -47,7 +47,7 @@ const PricingSection = () => {
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 + i * 0.15, duration: 0.7, type: 'spring' }}
-            className={`relative p-8 rounded-lg shadow w-72 flex flex-col items-center border-2 ${plan.highlight ? 'border-blue-600 bg-blue-50 z-10' : 'border-blue-100 bg-blue-100/60'} ${plan.highlight ? 'scale-105' : ''}`}
+            className={`relative p-8 rounded-2xl shadow w-full md:w-72 flex flex-col items-center border-2 ${plan.highlight ? 'border-blue-600 bg-blue-50 z-10' : 'border-blue-100 bg-blue-100/60'} ${plan.highlight ? 'scale-105' : ''}`}
           >
             {plan.highlight && (
               <motion.div
@@ -69,12 +69,12 @@ const PricingSection = () => {
                 <li key={f}>• {f}</li>
               ))}
             </ul>
-            <button className={`px-4 py-2 rounded font-semibold ${plan.highlight ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-blue-700 hover:bg-blue-200'} transition`}>{plan.cta}</button>
+            <button className={`px-4 py-2 rounded-xl font-semibold ${plan.highlight ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-blue-700 hover:bg-blue-200'} transition w-full mt-2 focus:outline-none focus:ring-4 focus:ring-blue-300`}>{plan.cta}</button>
           </motion.div>
         ))}
       </div>
       {/* Feature Comparison Table */}
-      <div className="mt-12 w-full max-w-2xl bg-blue-50 rounded-xl shadow p-6">
+      <div className="mt-12 w-full max-w-2xl bg-blue-50 rounded-xl shadow p-6 overflow-x-auto">
         <h4 className="font-bold text-blue-900 mb-4">Feature Comparison</h4>
         <table className="w-full text-sm text-blue-800">
           <thead>

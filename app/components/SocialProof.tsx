@@ -2,49 +2,56 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const reviewData = [
-  { label: 'Capterra', icon: 'https://cdn.worldvectorlogo.com/logos/capterra-1.svg', rating: 4.8 },
-  { label: 'G2', icon: 'https://cdn.worldvectorlogo.com/logos/g2-crowd-1.svg', rating: 4.8 },
-  { label: 'Xero', icon: 'https://cdn.worldvectorlogo.com/logos/xero-1.svg', rating: 3.50 },
-  { label: 'Quickbooks', icon: 'https://cdn.worldvectorlogo.com/logos/intuit-quickbooks.svg', rating: 5.50 },
-];
-
 const customerLogos = [
-  'https://cdn.worldvectorlogo.com/logos/github-icon-1.svg',
-  'https://cdn.worldvectorlogo.com/logos/microsoft-6.svg',
-  'https://cdn.worldvectorlogo.com/logos/google-icon.svg',
-  'https://cdn.worldvectorlogo.com/logos/amazon-icon-1.svg',
+  {
+    name: 'Perplexity',
+    url: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Perplexity_AI_logo.svg',
+  },
+  {
+    name: 'Supercell',
+    url: 'https://upload.wikimedia.org/wikipedia/commons/5/5a/Supercell-logo.svg',
+  },
+  {
+    name: 'Monzo',
+    url: 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Monzo_logo.svg',
+  },
+  {
+    name: 'Raycast',
+    url: 'https://raycast.com/_next/static/media/logo.9c0e2b7e.svg',
+  },
+  {
+    name: 'Retool',
+    url: 'https://upload.wikimedia.org/wikipedia/commons/6/6b/Retool_logo.svg',
+  },
+  {
+    name: 'Mercury',
+    url: 'https://assets-global.website-files.com/5f6b7190899c3a1c1a3c7b2c/5f6b7190899c3a7e7a3c7b3a_mercury-logo.svg',
+  },
 ];
 
 const SocialProof = () => (
-  <section className="w-full py-8 flex flex-col items-center bg-gradient-to-br from-blue-50 via-white to-blue-100">
-    {/* Review Badges */}
-    <div className="flex flex-wrap gap-6 justify-center items-center mb-6">
-      {reviewData.map((r, i) => (
+  <section className="w-full py-16 flex flex-col items-center bg-gradient-to-br from-blue-50 via-white to-blue-100">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-12 gap-x-8 w-full max-w-4xl px-4">
+      {customerLogos.map((logo, i) => (
         <motion.div
-          key={r.label}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 + i * 0.15, duration: 0.6, type: 'spring' }}
-          className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-lg rounded-full shadow border border-blue-100 text-blue-900 text-sm font-semibold"
+          key={logo.name}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 * i, duration: 0.6, type: 'spring' }}
+          className="flex flex-col items-center justify-center bg-white/80 rounded-2xl shadow-lg p-6 border border-blue-100 transition-all"
         >
-          <img src={r.icon} alt={r.label} className="h-6 w-6" />
-          <span>★ {r.rating} rating on</span>
-          <span className="font-bold">{r.label}</span>
+          <img
+            src={logo.url}
+            alt={logo.name + ' logo'}
+            className="h-12 sm:h-14 w-auto mb-2"
+            style={{ maxWidth: '160px', objectFit: 'contain' }}
+            loading="lazy"
+          />
+          <span className="text-blue-900 text-lg font-medium mt-2" style={{letterSpacing: '0.01em'}}>{logo.name}</span>
         </motion.div>
       ))}
     </div>
-    {/* Customer Logos */}
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.5 }}
-      className="flex flex-wrap gap-8 justify-center items-center"
-    >
-      {customerLogos.map((logo, i) => (
-        <img key={i} src={logo} alt={`Customer Logo ${i + 1}`} className="h-10 w-auto grayscale hover:grayscale-0 transition bg-white rounded-xl p-2 shadow border border-blue-100" />
-      ))}
-    </motion.div>
   </section>
 );
 

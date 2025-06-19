@@ -19,8 +19,7 @@ const blocks = [
 
 const ScrollReveal = () => (
   <section className="w-full py-16 bg-gradient-to-r from-blue-100 to-blue-200 flex flex-col items-center">
-    <h2 className="text-2xl font-bold mb-8">Scroll-triggered Features</h2>
-    <div className="flex flex-wrap gap-8 justify-center">
+     <div className="flex flex-wrap gap-8 justify-center">
       {blocks.map((block, i) => (
         <motion.div
           key={block.title}

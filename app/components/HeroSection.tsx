@@ -9,7 +9,7 @@ const bgShapes = [
 ];
 
 const HeroSection = () => (
-  <section className="relative w-full min-h-[70vh] flex flex-col items-center justify-center bg-gradient-to-b from-blue-900 to-blue-600 text-white text-center overflow-hidden">
+  <section className="relative w-full min-h-[70vh] flex flex-col items-center justify-center bg-gradient-to-b from-blue-50 via-white to-blue-100 text-blue-900 text-center overflow-hidden px-4 sm:px-8 pt-24 pb-10">
     {/* Animated Background Shapes */}
     {bgShapes.map((shape, i) => (
       <div key={i} className={shape.className} style={shape.style}></div>
@@ -19,7 +19,7 @@ const HeroSection = () => (
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className="text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg"
+      className="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg text-blue-900"
     >
       Supercharge your coding with an AI agent that lives in your terminal
     </motion.h1>
@@ -28,7 +28,7 @@ const HeroSection = () => (
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ scale: [1, 1.1, 1], opacity: 1 }}
       transition={{ duration: 1.2, repeat: Infinity, repeatType: 'reverse', delay: 1 }}
-      className="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-full bg-white/10 border border-white/30 text-lg font-semibold text-yellow-300 shadow-lg backdrop-blur-sm"
+      className="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-full bg-yellow-100 border border-yellow-300 text-lg font-semibold text-yellow-700 shadow-lg backdrop-blur-sm"
     >
       <span className="text-xl">✨</span> Now with AI-insights
     </motion.div>
@@ -37,7 +37,7 @@ const HeroSection = () => (
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.6 }}
-      className="mb-8 text-lg md:text-xl text-white/90"
+      className="mb-8 text-lg md:text-xl text-blue-800"
     >
       Nexus AI is your CLI-based, context-aware AI agent for developers. <br className="hidden md:block" /> Seamlessly integrates with VSCode, Neovim, and your terminal.
     </motion.p>
@@ -45,7 +45,10 @@ const HeroSection = () => (
     <motion.button
       whileHover={{ scale: 1.08 }}
       whileTap={{ scale: 0.96 }}
-      className="px-8 py-3 bg-white text-blue-700 font-bold rounded-lg shadow-lg hover:bg-blue-100 transition text-lg md:text-xl"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: 1 }}
+      className="px-8 py-3 bg-blue-700 text-white font-bold rounded-xl shadow-lg hover:bg-blue-800 transition text-lg md:text-xl focus:outline-none focus:ring-4 focus:ring-blue-300"
     >
       Start 14-day free trial
     </motion.button>

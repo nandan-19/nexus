@@ -29,20 +29,20 @@ const ShowcaseWork = () => {
   };
 
   return (
-    <section className="w-full py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 flex flex-col items-center">
+    <section className="w-full py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 flex flex-col items-center px-4">
       <h2 className="text-3xl font-bold mb-8 text-blue-900 drop-shadow">Showcase Work</h2>
       <div className="relative w-full max-w-2xl flex flex-col items-center">
         <AnimatePresence initial={false} mode="wait">
           <motion.div
             key={index}
-            initial={{ x: 100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -100, opacity: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="flex flex-col md:flex-row items-center bg-white/70 backdrop-blur-lg p-8 rounded-2xl shadow-2xl min-h-[220px] w-full border border-blue-100"
+            className="flex flex-col md:flex-row items-center bg-white/90 backdrop-blur-lg p-8 rounded-2xl shadow-2xl min-h-[220px] w-full border border-blue-100"
             style={{ position: 'absolute' }}
           >
-            <img src={useCase.img} alt={useCase.title} className="w-40 h-32 object-cover rounded-xl mb-4 md:mb-0 md:mr-8 border-2 border-blue-200 bg-white shadow-lg" />
+            <img src={useCase.img} alt={useCase.title} className="w-40 h-32 object-cover rounded-xl mb-4 md:mb-0 md:mr-8 border-2 border-blue-200 bg-white shadow-lg" loading="lazy" />
             <div className="flex-1 flex flex-col items-center md:items-start">
               <h3 className="font-semibold mb-2 text-blue-900 text-lg">{useCase.title}</h3>
               <p className="text-blue-800 text-center md:text-left text-base">{useCase.desc}</p>
@@ -50,8 +50,8 @@ const ShowcaseWork = () => {
           </motion.div>
         </AnimatePresence>
         <div className="flex gap-4 mt-40 justify-center relative z-10">
-          <button onClick={() => paginate(-1)} className="px-4 py-2 bg-blue-200 rounded-full hover:bg-blue-300 transition">&#8592;</button>
-          <button onClick={() => paginate(1)} className="px-4 py-2 bg-blue-200 rounded-full hover:bg-blue-300 transition">&#8594;</button>
+          <button onClick={() => paginate(-1)} className="px-4 py-2 bg-blue-200 text-blue-900 rounded-full hover:bg-blue-300 transition font-bold text-lg focus:outline-none focus:ring-4 focus:ring-blue-300" aria-label="Previous use case">&#8592;</button>
+          <button onClick={() => paginate(1)} className="px-4 py-2 bg-blue-200 text-blue-900 rounded-full hover:bg-blue-300 transition font-bold text-lg focus:outline-none focus:ring-4 focus:ring-blue-300" aria-label="Next use case">&#8594;</button>
         </div>
         <div className="flex gap-2 mt-4">
           {useCases.map((_, i) => (
